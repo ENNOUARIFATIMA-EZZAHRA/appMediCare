@@ -1,4 +1,4 @@
-package model;
+package rvDoctor.Dao.model;
 
 public class patient {
     private int id;
