@@ -1,19 +1,19 @@
-package rvDoctor.Dao.model;
+package com.medicare.model;
 
-public class patient {
+public class patientModel {
     private int id;
     private String username;
     private String email;
     private String tel;
 
-
-    public patient(int id, String username, String email, String tel) {
+    public patientModel(int id, String username, String email, String tel) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.tel = tel;
     }
-    public patient(String username, String email, String tel) {
+
+    public patientModel(String username, String email, String tel) {
         this.username = username;
         this.email = email;
         this.tel = tel;
@@ -50,7 +50,4 @@ public class patient {
     public void setTel(String tel) {
         this.tel = tel;
     }
-
-
-
 }

@@ -15,11 +15,11 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
-                      http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
-  version="4.0">
+  xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                      https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+  version="6.0">
 
   <!-- ======================== Introduction ============================== -->
   <!-- This document defines default values for *all* web applications      -->
@@ -30,6 +30,11 @@
   <!--                                                                      -->
   <!-- WARNING:  Do not configure application-specific resources here!      -->
   <!-- They should go in the "/WEB-INF/web.xml" file in your application.   -->
+
+
+  <!-- Set the default request and response character encodings to UTF-8.   -->
+  <request-character-encoding>UTF-8</request-character-encoding>
+  <response-character-encoding>UTF-8</response-character-encoding>
 
 
   <!-- ================== Built In Servlet Definitions ==================== -->
@@ -153,9 +158,9 @@
   <!--                       pages.  See the jasper documentation for more  -->
   <!--                       information.                                   -->
   <!--                                                                      -->
-  <!--   compilerSourceVM    Compiler source VM. [1.8]                      -->
+  <!--   compilerSourceVM    Compiler source VM. [11]                      -->
   <!--                                                                      -->
-  <!--   compilerTargetVM    Compiler target VM. [1.8]                      -->
+  <!--   compilerTargetVM    Compiler target VM. [11]                      -->
   <!--                                                                      -->
   <!--   development         Is Jasper used in development mode? If true,   -->
   <!--                       the frequency at which JSPs are checked for    -->
@@ -194,11 +199,6 @@
   <!--                       Should text strings be generated as char       -->
   <!--                       arrays, to improve performance in some cases?  -->
   <!--                       [false]                                        -->
-  <!--                                                                      -->
-  <!--   ieClassId           Deprecated. Will be removed in Tomcat 10.1     -->
-  <!--                       The class-id value to be sent to Internet      -->
-  <!--                       Explorer when using <jsp:plugin> tags.         -->
-  <!--                       [clsid:8AD9C840-044E-11D1-B3E9-00805F499D93]   -->
   <!--                                                                      -->
   <!--   javaEncoding        Java file encoding to use for generating java  -->
   <!--                       source files. [UTF8]                           -->
@@ -1251,7 +1251,7 @@
     </mime-mapping>
     <mime-mapping>
         <extension>dae</extension>
-        <mime-type>rvDoctor.Dao.model/vnd.collada+xml</mime-type>
+        <mime-type>model/vnd.collada+xml</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>daf</extension>
@@ -1443,7 +1443,7 @@
     </mime-mapping>
     <mime-mapping>
         <extension>dwf</extension>
-        <mime-type>rvDoctor.Dao.model/vnd.dwf</mime-type>
+        <mime-type>model/vnd.dwf</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>dwg</extension>
@@ -1759,7 +1759,7 @@
     </mime-mapping>
     <mime-mapping>
         <extension>gdl</extension>
-        <mime-type>rvDoctor.Dao.model/vnd.gdl</mime-type>
+        <mime-type>model/vnd.gdl</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>geo</extension>
@@ -1855,7 +1855,7 @@
     </mime-mapping>
     <mime-mapping>
         <extension>gtw</extension>
-        <mime-type>rvDoctor.Dao.model/vnd.gtw</mime-type>
+        <mime-type>model/vnd.gtw</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>gv</extension>
@@ -1991,7 +1991,7 @@
     </mime-mapping>
     <mime-mapping>
         <extension>iges</extension>
-        <mime-type>rvDoctor.Dao.model/iges</mime-type>
+        <mime-type>model/iges</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>igl</extension>
@@ -2003,7 +2003,7 @@
     </mime-mapping>
     <mime-mapping>
         <extension>igs</extension>
-        <mime-type>rvDoctor.Dao.model/iges</mime-type>
+        <mime-type>model/iges</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>igx</extension>
@@ -2423,7 +2423,7 @@
     </mime-mapping>
     <mime-mapping>
         <extension>mesh</extension>
-        <mime-type>rvDoctor.Dao.model/mesh</mime-type>
+        <mime-type>model/mesh</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>meta4</extension>
@@ -2671,7 +2671,7 @@
     </mime-mapping>
     <mime-mapping>
         <extension>msh</extension>
-        <mime-type>rvDoctor.Dao.model/mesh</mime-type>
+        <mime-type>model/mesh</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>msi</extension>
@@ -2687,7 +2687,7 @@
     </mime-mapping>
     <mime-mapping>
         <extension>mts</extension>
-        <mime-type>rvDoctor.Dao.model/vnd.mts</mime-type>
+        <mime-type>model/vnd.mts</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>mus</extension>
@@ -3612,7 +3612,7 @@
     </mime-mapping>
     <mime-mapping>
         <extension>silo</extension>
-        <mime-type>rvDoctor.Dao.model/mesh</mime-type>
+        <mime-type>model/mesh</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>sis</extension>
@@ -4232,7 +4232,7 @@
     </mime-mapping>
     <mime-mapping>
         <extension>vrml</extension>
-        <mime-type>rvDoctor.Dao.model/vrml</mime-type>
+        <mime-type>model/vrml</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>vsd</extension>
@@ -4256,7 +4256,7 @@
     </mime-mapping>
     <mime-mapping>
         <extension>vtu</extension>
-        <mime-type>rvDoctor.Dao.model/vnd.vtu</mime-type>
+        <mime-type>model/vnd.vtu</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>vxml</extension>
@@ -4409,7 +4409,7 @@
     </mime-mapping>
     <mime-mapping>
         <extension>wrl</extension>
-        <mime-type>rvDoctor.Dao.model/vrml</mime-type>
+        <mime-type>model/vrml</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>wsdl</extension>
@@ -4433,27 +4433,27 @@
     </mime-mapping>
     <mime-mapping>
         <extension>x3d</extension>
-        <mime-type>rvDoctor.Dao.model/x3d+xml</mime-type>
+        <mime-type>model/x3d+xml</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>x3db</extension>
-        <mime-type>rvDoctor.Dao.model/x3d+binary</mime-type>
+        <mime-type>model/x3d+binary</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>x3dbz</extension>
-        <mime-type>rvDoctor.Dao.model/x3d+binary</mime-type>
+        <mime-type>model/x3d+binary</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>x3dv</extension>
-        <mime-type>rvDoctor.Dao.model/x3d+vrml</mime-type>
+        <mime-type>model/x3d+vrml</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>x3dvz</extension>
-        <mime-type>rvDoctor.Dao.model/x3d+vrml</mime-type>
+        <mime-type>model/x3d+vrml</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>x3dz</extension>
-        <mime-type>rvDoctor.Dao.model/x3d+xml</mime-type>
+        <mime-type>model/x3d+xml</mime-type>
     </mime-mapping>
     <mime-mapping>
         <extension>xaml</extension>

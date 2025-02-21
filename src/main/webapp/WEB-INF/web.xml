@@ -1,7 +1,18 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD rvDoctor.rvDoctor.Dao.Dao.Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
+  <display-name>Medicare Web Application</display-name>
 
-<web-app>
-  <display-name>Archetype Created rvDoctor.Dao.Web Application</display-name>
+  <!-- Servlet definition -->
+  <servlet>
+    <servlet-name>patientServlet</servlet-name>
+    <servlet-class>com.medicare.web.patient.PatientServlet</servlet-class>
+  </servlet>
+
+  <!-- Mapping the servlet to the /medi-care/patient path -->
+  <servlet-mapping>
+    <servlet-name>patientServlet</servlet-name>
+    <url-pattern>/medi-care/index/new</url-pattern> <!-- Mapping changed to /medi-care/patient -->
+  </servlet-mapping>
 </web-app>

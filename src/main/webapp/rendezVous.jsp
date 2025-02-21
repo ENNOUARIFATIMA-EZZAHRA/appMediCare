@@ -1,31 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <html>
 <head>
-    <title>Patient List</title>
+    <title> rendez_vous</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100">
-    <div class="container mx-auto p-6">
-
-
-
-    <div class="container mx-auto p-6">
-        <div class="header flex justify-start">
+<header>
+           <nav class="bg-red-200 px-4 text-white flex justify-between pt-8  pb-0">
+                    <div class="header flex justify-start justify-around items-center">
             <a href="#" class="text-blue-500 hover:underline">Home</a>
 
         </div>
-        <div class="header flex justify-start">
-            <a href="#" class="text-blue-500 hover:underline">Login</a>
-        </div>
-        <nav class="bg-red-500 p-4 text-white flex justify-between">
-
-            <ul class="flex space-x-4">
-                <li><a href="<%=request.getContextPath()%>/list" class="hover:underline">List Patient</a></li><br><br><br>
-            </ul>
-        </nav>
-        <br>
+                    </header>
+   <br><br><br><br>
         <div class="container mx-auto w-1/2">
             <div class="bg-white shadow-md rounded-lg p-6">
                 <div class="mb-4">

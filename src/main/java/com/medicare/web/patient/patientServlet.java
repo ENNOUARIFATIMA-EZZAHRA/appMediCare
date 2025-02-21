@@ -1,21 +1,19 @@
-package rvDoctor.Dao.Web;
+package com.medicare.web.patient;
 
-import rvDoctor.Dao.model.patient;
-import rvDoctor.dao.patientDao;
-import rvDoctor.model.patient;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.List;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/")
-public class PatientServlets extends HttpServlet implements Serializable {
+import com.medicare.model.patientModel;
+import com.medicare.dao.patientDao;
+@WebServlet("/medi-care/*")
+public class patientServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private patientDao patientDao;
 
@@ -23,30 +21,25 @@ public class PatientServlets extends HttpServlet implements Serializable {
         patientDao = new patientDao();
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        doGet(request, response);
-    }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String action = request.getServletPath();
+        String action = request.getPathInfo();
 
         try {
             switch (action) {
-                case "/new":
+                case "/medi-care/new":
                     showNewForm(request, response);
                     break;
-                case "/insert":
+                case "/medi-care/insert":
                     insertPatient(request, response);
                     break;
-                case "/update":
+                case "/medi-care/update":
                     updatePatient(request, response);
                     break;
-                case "/delete":
+                case "/medi-care/delete":
                     deletePatient(request, response);
                     break;
-                case "/edit":
+                case "/medi-care/edit":
                     showEditForm(request, response);
                     break;
                 default:
@@ -58,61 +51,64 @@ public class PatientServlets extends HttpServlet implements Serializable {
         }
     }
 
-    private void listPatient(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException, ServletException {
-        List<patient> listPatient = patientDao.selectAllPatients();
-        request.setAttribute("listPatient", listPatient);
-        request.getRequestDispatcher("Patient-list.jsp").forward(request, response);
-    }
-
-    private void showNewForm(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        RequestDispatcher dispatcher = request.getRequestDispatcher("Patient-form.jsp");
-        dispatcher.forward(request, response);
-    }
-
     private void showEditForm(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
-        patient existingPatient = patientDao.selectPatient(id);
+        patientModel existingPatient = patientDao.selectPatient(id);
         request.setAttribute("patient", existingPatient);
-        request.getRequestDispatcher("Patient-form.jsp").forward(request, response);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/patient-form.jsp");
+        dispatcher.forward(request, response);
     }
+
+
+
+    private void listPatient(HttpServletRequest request, HttpServletResponse response)
+            throws SQLException, IOException, ServletException {
+        List<patientModel> listPatient = patientDao.selectAllPatients();
+        request.setAttribute("listPatient", listPatient);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("patient-list.jsp");
+        dispatcher.forward(request, response);
+    }
+
+
+    private void showNewForm(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/patient-form.jsp");
+        dispatcher.forward(request, response);
+    }
+
 
     private void insertPatient(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException {
+            throws SQLException, ServletException, IOException {
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         String tel = request.getParameter("tel");
 
-        if (username == null || username.trim().isEmpty() ||
-                email == null || email.trim().isEmpty() ||
-                tel == null || tel.trim().isEmpty()) {
-            response.getWriter().write("Invalid input data!");
-            return;
-        }
-
-        patient newPatient = new patient(username, email, tel);
+        patientModel newPatient = new patientModel(username, email, tel);
         patientDao.insertPatient(newPatient);
-        response.sendRedirect("list");
+
+        response.sendRedirect("medi-care/home");
     }
+
 
     private void updatePatient(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException {
+            throws SQLException, ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         String username = request.getParameter("username");
         String email = request.getParameter("email");
         String tel = request.getParameter("tel");
 
-        patient patient = new patient(id, username, email, tel);
-        patientDao.updatePatient(patient);
-        response.sendRedirect("list");
+        patientModel updatedPatient = new patientModel(id, username, email, tel);
+        patientDao.updatePatient(updatedPatient);
+
+        response.sendRedirect("medi-care/home");
     }
 
+
     private void deletePatient(HttpServletRequest request, HttpServletResponse response)
-            throws SQLException, IOException {
+            throws SQLException, ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("id"));
         patientDao.deletePatient(id);
-        response.sendRedirect("list");
+        response.sendRedirect("medi-care/home");
     }
 }
