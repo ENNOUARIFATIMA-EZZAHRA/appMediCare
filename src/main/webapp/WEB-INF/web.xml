@@ -4,15 +4,13 @@
          version="3.0">
   <display-name>Medicare Web Application</display-name>
 
-  <!-- Servlet definition -->
   <servlet>
     <servlet-name>patientServlet</servlet-name>
-    <servlet-class>com.medicare.web.patient.PatientServlet</servlet-class>
+    <servlet-class>com.medicare.web.patient.patientServlet</servlet-class>
   </servlet>
 
-  <!-- Mapping the servlet to the /medi-care/patient path -->
   <servlet-mapping>
     <servlet-name>patientServlet</servlet-name>
-    <url-pattern>/medi-care/index/new</url-pattern> <!-- Mapping changed to /medi-care/patient -->
+    <url-pattern>/index</url-pattern>  <!-- Assure-toi que le mapping correspond à l'URL d'accès -->
   </servlet-mapping>
 </web-app>

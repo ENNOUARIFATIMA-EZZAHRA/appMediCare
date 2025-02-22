@@ -16,7 +16,9 @@
     </header>
 
     <div class="container mx-auto p-6">
-        <a href="<%=request.getContextPath()%>/medi-care/new" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Ajouter nouveau patient</a>
+<a href="<%= request.getContextPath() %>/patient?action=new" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"> Ajouter Nouveau Patient
+</a>
+
         <br> <br>
         <h2 class="text-3xl font-bold mb-4">Liste des Patients</h2>
 

@@ -25,7 +25,7 @@
     <div class="container mx-auto w-1/2">
         <div class="bg-white shadow-md rounded-lg p-6">
             <div class="mb-4">
-                <form action="<c:if test='${patient != null}'>update</c:if><c:if test='${patient == null}'>insert</c:if>" method="post">
+               <form action="<%= request.getContextPath() %>/patient?action=insert" method="post">
 
                     <caption>
                         <h2 class="text-2xl font-bold mb-4">
@@ -53,8 +53,8 @@
                         <input type="text" value="<c:out value='${patient.tel}' />" class="mt-2 p-2 w-full border border-gray-300 rounded" name="tel" required>
                     </div>
 
-                    <button type="submit" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">Submit</button>
-                </form>
+                    <button type="submit" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">Ajouter</button>
+                    </form>
             </div>
         </div>
     </div>
